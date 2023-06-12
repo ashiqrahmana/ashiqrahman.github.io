@@ -1,46 +1,20 @@
 <?php
-
-$errors = [];
-$errorMessage = '';
-
-if (!empty($_POST)) {
-   $name = $_POST['name'];
-   $email = $_POST['email'];
-   $message = $_POST['message'];
-
-   if (empty($name)) {
-       $errors[] = 'Name is empty';
-   }
-
-   if (empty($email)) {
-       $errors[] = 'Email is empty';
-   } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       $errors[] = 'Email is invalid';
-   }
-
-   if (empty($message)) {
-       $errors[] = 'Message is empty';
-   }
-
-   if (empty($errors)) {
-       $toEmail = 'example@example.com';
-       $emailSubject = 'New email from your contact form';
-       $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
-       $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", $message];
-       $body = join(PHP_EOL, $bodyParagraphs);
-
-       if (mail($toEmail, $emailSubject, $body, $headers)) 
-
-           header('Location: thank-you.html');
-       } else {
-           $errorMessage = 'Oops, something went wrong. Please try again later';
-       }
-
-   } else {
-
-       $allErrors = join('<br/>', $errors);
-       $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
-   }
-}
-
+  $to = "ashiq.rahman@nyu.edu";
+  $subject = "This is subject";
+  
+  $message = "<b>This is HTML message.</b>";
+  $message .= "<h1>This is headline.</h1>";
+  
+  $header = "From:ashiqrahmanab@gmail.com \r\n";
+  $header .= "Cc:ashiqrahman741@gmail.com \r\n";
+  $header .= "MIME-Version: 1.0\r\n";
+  $header .= "Content-type: text/html\r\n";
+  
+  $retval = mail ($to,$subject,$message,$header);
+  
+  if( $retval == true ) {
+    echo "Message sent successfully...";
+  }else {
+    echo "Message could not be sent...";
+  }
 ?>
