@@ -48,7 +48,7 @@
 							<h2>Get in touch</h2>
 							<div class="split style1">
 								<section>
-									<form method="post" action="#">
+									<form method="post" action="form-to-email.php">
 										<div class="fields">
 											<div class="field half">
 												<label for="name">Name</label>
@@ -67,6 +67,15 @@
 											<li><a href="mailto: aa10277@nyu.edu?subject = Name&body = Message" class="button submit">Send Message</a></li>
 										</ul>
 									</form>
+									<script language="JavaScript">
+										// Code for validating the form
+										// Visit http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
+										// for details
+										var frmvalidator  = new Validator("myemailform");
+										frmvalidator.addValidation("name","req","Please provide your name"); 
+										frmvalidator.addValidation("email","req","Please provide your email"); 
+										frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+									</script>
 								</section>
 								<section>
 									<ul class="contact">
