@@ -14,13 +14,29 @@
 		<style>
 			/* CSS styles for the list */
 			ul {
-			  display: none; /* Hide the list by default */
-			  padding: 0;
+				list-style: disc;
+				margin: 0 0 2em 0;
+				padding-left: 1em;
 			}
-			
-			/*li {
-			  margin-bottom: 5px;
-			}*/
+
+				ul li {
+					padding-left: 0.5em;
+				}
+
+				ul.alt {
+					list-style: none;
+					padding-left: 0;
+				}
+
+					ul.alt li {
+						border-top: solid 1px rgba(255, 255, 255, 0.15);
+						padding: 0.5em 0;
+					}
+
+						ul.alt li:first-child {
+							border-top: 0;
+							padding-top: 0;
+						}
 			
 			/* CSS styles for the element triggering the list */
 			.hoverable:hover + ul {
